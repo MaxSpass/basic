@@ -30,8 +30,8 @@ gulp.task('sass',function(){
 // MINIFY/CONCAT JS (if need)
 gulp.task('minify-js',function(){
 	return gulp.src([
-		'app/libs/CONTACT-FILES/',
-		'app/libs/CONTACT-FILES/',
+		'app/libs/concat_js/',
+		'app/libs/concat_js/',
 	])
 	.pipe(concat('libs.min.js'))
 	.pipe(uglify())
