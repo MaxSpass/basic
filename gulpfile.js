@@ -30,8 +30,7 @@ gulp.task('sass',function(){
 // MINIFY/CONCAT JS (if need)
 gulp.task('minify-js',function(){
 	return gulp.src([
-		'app/libs/concat_js/',
-		'app/libs/concat_js/',
+		'app/libs/concat_js/*.js'
 	])
 	.pipe(concat('libs.min.js'))
 	.pipe(uglify())
@@ -66,7 +65,7 @@ gulp.task('clear', function(){
 });
 
 // Main Function WATCH
-gulp.task('default',['browserSync', 'minify-css'], function(){
+gulp.task('default',['browserSync','minify-css','minify-js'], function(){
 	gulp.watch('app/sass/**/*.+(sass|scss)', ['sass']);
 	gulp.watch('app/*.html', browserSync.reload);
 	gulp.watch('app/js/*.js', browserSync.reload);
@@ -106,4 +105,6 @@ gulp.task('build',['clean', 'img', 'sass'], function(){
 	var buildHtml = gulp.src('app/*.html')
 	.pipe(gulp.dest('dist'));
 
+	var buildJs = gulp.src('app/libs/**/*')
+	.pipe(gulp.dest('dist/libs'));
 });
