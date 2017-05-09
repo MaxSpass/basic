@@ -1,21 +1,18 @@
 // Gulp Moduls-Variables
 var gulp 		 = require('gulp')
 	browserSync  = require('browser-sync'),
-
 	sass 		 = require('gulp-sass'),
 	autoprefixer = require('gulp-autoprefixer'),
-
 	concat 		 = require('gulp-concat'),
 	uglify 		 = require('gulp-uglifyjs'),
-
 	cssnano 	 = require('gulp-cssnano'),
 	rename 		 = require('gulp-rename'),
-
 	imagemin 	 = require('gulp-imagemin'),
 	pngquant 	 = require('imagemin-pngquant'),
-
 	cache 		 = require('gulp-cache'),
-	del 		 = require('del');
+	del 		 = require('del'),
+	gcmq 		 = require('gulp-group-css-media-queries');
+
 
 // SASS fuction
 gulp.task('sass',function(){
@@ -23,6 +20,7 @@ gulp.task('sass',function(){
 		// .pipe(sass())
 		.pipe(sass().on('error', sass.logError))
 		.pipe(autoprefixer(['last 15 versions','> 1%','ie 8'],{cascade:true}))
+		.pipe(gcmq())
 		.pipe(gulp.dest('app/css'))
 		.pipe(browserSync.reload({stream:true}))
 });
