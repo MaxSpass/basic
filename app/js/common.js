@@ -64,5 +64,5 @@
 		document.body.insertBefore(debugBox1, document.body.firstChild);
 	}
 
-	PreviewSmartGrid()
+	// PreviewSmartGrid()
 	DebugSmartGrid()
